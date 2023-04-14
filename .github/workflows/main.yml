@@ -34,8 +34,8 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Run tests with coverage 
       run: |
-        pytest --cov=my_package tests/
+        pytest --cov=mask tests/
     - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v2.1.0
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+      uses: codecov/codecov-action@v3 
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
