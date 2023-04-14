@@ -1,1 +1,2 @@
 # mask
+Mask sensitive information
