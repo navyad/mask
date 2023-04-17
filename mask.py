@@ -1,11 +1,20 @@
 from enum import Enum
 
+from abc import ABC, abstractmethod
+
+
+class Mask(ABC):
+
+    @abstractmethod
+    def mask(self):
+        pass
+
 
 class MaskType(Enum):
     EMAIL = "email"
 
 
-class Email(object):
+class Email(Mask):
 
     @staticmethod
     def masker(user_part: str, chars_shown: int = 3) -> str:
@@ -13,7 +22,10 @@ class Email(object):
         return f'{user_part[:chars_shown]}{"*" * (hidden_chars)}'
 
     def mask(self, val) -> str:
-        self.user_part, self.domain_part = val.rsplit('@')
+        try:
+            self.user_part, self.domain_part = val.rsplit('@')
+        except ValueError:
+            raise Exception("Invalid email")
         masked_usr = self.masker(self.user_part)
         return f'{masked_usr}@{self.domain_part}'
 
