@@ -7,11 +7,12 @@ class Mask(ABC):
 
     @abstractmethod
     def mask(self):
-        pass
+        pass  # pragma: no cover
 
 
 class MaskType(Enum):
     EMAIL = "email"
+    PASSWORD = "password"
 
 
 class Email(Mask):
@@ -30,8 +31,14 @@ class Email(Mask):
         return f'{masked_usr}@{self.domain_part}'
 
 
+class Password(Mask):
+
+    def mask(self, val) -> str:
+        return f'{"*" * len(val)}'
+
+
 def factory(mask_type):
-    masktypes = {"email": Email()}
+    masktypes = {"email": Email(), "password": Password()}
     return masktypes[mask_type.value]
 
 

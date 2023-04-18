@@ -23,3 +23,10 @@ def test_invalid_email():
     with pytest.raises(Exception) as exc_info:
         mask(MaskType.EMAIL, "reliko9368lieboe.com")
     assert exc_info.value.args[0] == "Invalid email"
+
+
+def test_password():
+    password = "thisisdummypwd"
+    expected = "*" * len(password)
+    masked = mask(MaskType.PASSWORD, password)
+    assert masked == expected
