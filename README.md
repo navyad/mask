@@ -12,10 +12,11 @@ I am sure, you do not want expose sensitive information.
 
 ## Mask Types
 
-|Type         |Description                                         |
-|:-----------:|:---------------------------------------------------|
-|EMAIL        |keep first three chars and domain.                  |
-|PASSWORD     |all characters are masked.                          |
+|Type         |Description                                                  |
+|:-----------:|:------------------------------------------------------------|
+|EMAIL        |keep first three chars and domain.                           |
+|PASSWORD     |all characters are masked.                                   |
+|MOBILE       |keep first and last three chars, rest inbetween chars masked.|
 
 
 
