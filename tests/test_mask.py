@@ -30,3 +30,9 @@ def test_password():
     expected = "*" * len(password)
     masked = mask(MaskType.PASSWORD, password)
     assert masked == expected
+
+
+def test_mobile():
+    expected = "446***899"
+    masked = mask(MaskType.MOBILE, "446681899")
+    assert masked == expected

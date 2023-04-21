@@ -22,12 +22,15 @@ I am sure, you do not want expose sensitive information.
 ## Usage
 
 ```python
->>> from mask import mask, MaskType
+>> from mask import mask, MaskType
 
->>> mask(MaskType.EMAIL, "reliko9368@lieboe.com")
+>> mask(MaskType.EMAIL, "reliko9368@lieboe.com")
 rel*******@lieboe.com
 
->>> mask(MaskType.PASSWORD, "123@KBC$fdcDED")
+>> mask(MaskType.PASSWORD, "123@KBC$fdcDED")
 **************
+
+>> mask(MaskType.MOBILE, "446681899")
+"446***899"
 ```
 

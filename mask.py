@@ -13,6 +13,7 @@ class Mask(ABC):
 class MaskType(Enum):
     EMAIL = "email"
     PASSWORD = "password"
+    MOBILE = "mobile"
 
 
 class Email(Mask):
@@ -33,12 +34,24 @@ class Email(Mask):
 
 class Password(Mask):
 
-    def mask(self, val) -> str:
+    def mask(self, val: str) -> str:
         return f'{"*" * len(val)}'
 
 
-def factory(mask_type):
-    masktypes = {"email": Email(), "password": Password()}
+class MobileNumber(Mask):
+
+    def mask(self, val: str) -> str:
+        chars_shown = 3
+        len_hidden_chars = len(val) - (chars_shown*2)
+        return f"{val[:chars_shown]}{'*' * len_hidden_chars}{val[-chars_shown:]}"
+
+
+def factory(mask_type: str) -> Mask:
+    masktypes = {
+            "email": Email(),
+            "password": Password(),
+            "mobile": MobileNumber()
+    }
     return masktypes[mask_type.value]
 
 
