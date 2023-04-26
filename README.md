@@ -17,6 +17,7 @@ I am sure, you do not want expose sensitive information.
 |EMAIL        |keep first three chars and domain.                           |
 |PASSWORD     |all characters are masked.                                   |
 |MOBILE       |keep first and last three chars, rest inbetween chars masked.|
+|CREDIT       |keep last four digits.					    | 
 
 
 
@@ -32,6 +33,9 @@ rel*******@lieboe.com
 **************
 
 >> mask(MaskType.MOBILE, "446681899")
-"446***899"
+446***899
+
+>> mask(MaskType.CREDIT, "6011510629586340")
+************6340
 ```
 

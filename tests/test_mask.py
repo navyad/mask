@@ -36,3 +36,9 @@ def test_mobile():
     expected = "446***899"
     masked = mask(MaskType.MOBILE, "446681899")
     assert masked == expected
+
+
+def test_credit():
+    expected = "************6340"
+    masked = mask(MaskType.CREDIT, "6011510629586340")
+    assert masked == expected

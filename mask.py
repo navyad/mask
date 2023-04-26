@@ -14,6 +14,7 @@ class MaskType(Enum):
     EMAIL = "email"
     PASSWORD = "password"
     MOBILE = "mobile"
+    CREDIT = "credit"
 
 
 class Email(Mask):
@@ -46,11 +47,20 @@ class MobileNumber(Mask):
         return f"{val[:chars_shown]}{'*' * len_hidden_chars}{val[-chars_shown:]}"
 
 
+class CreditCard(Mask):
+
+    def mask(self, val: str) -> str:
+        chars_shown = 4
+        len_hidden_chars = len(val) - chars_shown
+        return f"{'*' * len_hidden_chars}{val[-chars_shown:]}"
+
+
 def factory(mask_type: str) -> Mask:
     masktypes = {
             "email": Email(),
             "password": Password(),
-            "mobile": MobileNumber()
+            "mobile": MobileNumber(),
+            "credit": CreditCard()
     }
     return masktypes[mask_type.value]
 
